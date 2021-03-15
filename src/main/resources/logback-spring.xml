@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %X{X-B3-TraceId} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/shop-api.log</file>
+        <encoder>
+            <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/consultation.%d{yyyyMMdd}</fileNamePattern>
+            <maxHistory>90</maxHistory>
+        </rollingPolicy>
+    </appender>
+
+    <logger name="kr.co.juvis.consultation" additivity="false">
+        <appender-ref ref="STDOUT" />
+        <level value="INFO" />
+    </logger>
+
+    <logger name="jdbc" level="OFF"/>
+    <logger name="jdbc.connection" level="ERROR" />
+    <logger name="jdbc.sqlonly" level="INFO" />
+    <logger name="jdbc.sqltiming" level="OFF" />
+    <logger name="jdbc.audit" level="ERROR" />
+    <logger name="jdbc.resultset" level="ERROR" />
+    <logger name="jdbc.resultsettable" level="INFO" />
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </root>
+
+<!--    <springProfile name="dev">-->
+<!--    </springProfile>-->
+</configuration>

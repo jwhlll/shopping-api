@@ -1,0 +1,42 @@
+spring:
+  name: shop-api
+  profiles:
+    active: local
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        #show_sql: true
+        format_sql: true
+        use_sql_comments: true
+        
+springdoc:
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    operations-sorter: alpha
+    tags-sorter: alpha
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  paths-to-match:
+
+feign:
+  interceptor: false
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+
+logging:
+  file:
+    path: /svc/logs/shop/${spring.name}
+  level:
+    root: info
