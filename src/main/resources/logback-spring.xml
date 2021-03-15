@@ -13,12 +13,12 @@
             <pattern>[%d{yyyy-MM-dd HH:mm:ss}:%-3relative][%thread] %-5level %logger{35} - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_PATH}/consultation.%d{yyyyMMdd}</fileNamePattern>
+            <fileNamePattern>${LOG_PATH}/shop-api.%d{yyyyMMdd}</fileNamePattern>
             <maxHistory>90</maxHistory>
         </rollingPolicy>
     </appender>
 
-    <logger name="kr.co.juvis.consultation" additivity="false">
+    <logger name="com.shop.api" additivity="false">
         <appender-ref ref="STDOUT" />
         <level value="INFO" />
     </logger>

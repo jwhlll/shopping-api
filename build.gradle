@@ -6,7 +6,7 @@ plugins {
     id 'java'
 }
 
-group = 'kr.co.juvis'
+group = 'com.shop.api'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
